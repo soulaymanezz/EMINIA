@@ -103,14 +103,14 @@
             <br/>
             <br/>
             <h3>ChatBot</h3>
-            <p class="font-italic">
-              L’assistant virtuel EMINIA peut dialoguer et interagir avec les visiteurs au sein de l’université. Le chatbot utilise
-              des bibliothèques de questions et réponses en intégrant l’intelligence artificielle. A l’arrivé d’un visiteur, EMINIA se
+            <p class="font-italic" style="text-align: justify;">
+              L’assistant virtuel EMINIA peut dialoguer et intéragir avec les visiteurs au sein de l’université. Le chatbot utilise
+              des bibliothèques de questions et réponses en intégrant l’intelligence artificielle. A l’arrivée d’un visiteur, EMINIA se
               présente en tant qu’un assistant virtuel. Il met à sa disposition des sites web locaux et effectue des recherches sur
-              Google à la demande du visiteur. Il l’informe sur sa localisation et la météo du jour. Grâce à EMINIA, le visiteur
-              visite virtuellement l’université.
+              Google à la demande du visiteur. Il l’informe sur sa localisation et la météo du jour. Grâce à EMINIA, le visiteur peut 
+              visiter virtuellement l’université.
             </p>
-            <p class="font-italic">
+            <p class="font-italic" style="text-align: justify;">
               Si le visiteur veut se renseigner à propos d'une personne de la direction ou des autres départements de l'EMINES, il
               suffit qu'il dise le nom ou le prénom ou la fonction de cette personne et une carte visite s'affichera incluant des
               informations telles que l'e-mail professionnel et le bloc où se trouve le bureau de la personne concernée.
@@ -129,22 +129,22 @@
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <h3>Detection de la main</h3>
-            <p class="font-italic">
+            <p class="font-italic" style="text-align: justify;">
               Notre robot s'initialise lorsqu'il détecte la main de l'utilisateur et estime la distance qui les sépare.
-              La detection de la main se fait grâce à un model de machine learning. Pour celui-là on a utilisé une base de données
+              La detection de la main se fait grâce à un modèle de machine learning. Pour celui-là on a utilisé une base de données
               d'images de mains (CMU HAND DB et EGOHAND DB).
             </p>
-            <p class="font-italic">
+            <p class="font-italic" style="text-align: justify;">
               Le trainig a été effectué avec l'architecture standard de YOLOv3. Cette dernière qui est un algorithme de détection
               d'objet rapide et efficace.
             </p>
-            <p class="font-italic">
-              L'estimation de la distance se fait grâce à la camera INTEL REALSENSE D435 équipé de laser qui fournit des images RGBD
+            <p class="font-italic" style="text-align: justify;">
+              L'estimation de la distance se fait grâce à la caméra INTEL REALSENSE D435 équipée de laser qui fournit des images RGBD
               avec lesquelles on peut extraire la distance.
             </p>
-            <p class="font-italic">
-              Les majeures problèmes étaient la portée du camera qui ne dépasse pas 10 mètres et les conditions extérieurs tels que la
-              lumière qui perturbe le laser de la caméra. Des solutions comme la détection de la personne puis estimer la position de
+            <p class="font-italic" style="text-align: justify;">
+              Les problèmes majeurs étaient la portée du caméra qui ne dépasse pas 10 mètres et les conditions extérieures telles que la
+              lumière qui perturbe le laser de la caméra. Des solutions comme détecter la personne puis estimer la position de
               sa main ensuite exécuter le modèle de detection de main ont montré leur efficacité.
             </p>
           </div>
@@ -158,24 +158,23 @@
     <div class="row">
       <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
         <h3>Detection du masque</h3>
-        <p class="font-italic">
-          Après avoir détecter la main du visiteur et s’initialiser pour causer avec lui, les autres fonctionnalités du
+        <p class="font-italic" style="text-align: justify;">
+          Après avoir détecté la main du visiteur, les autres fonctionnalités du
           robot ne
-          s’exécutent qu’après la vérification que ce visiteur porte bel et bien un masque, et cela est à cause des
-          raisons
-          sanitaires vis-à-vis COVID-19 implémentées par l’UM6P.
+          s’exécutent qu’après la vérification que ce visiteur porte bel et bien son masque, et cela par respect des règles
+          sanitaires contre le COVID-19 implémentées par l’UM6P.
         </p>
-        <p class="font-italic">
+        <p class="font-italic" style="text-align: justify;">
           La détection du masque se fait par le biais d’un algorithme d’apprentissage automatique qui a été développé
           par le
           langage de programmation Python en se basant sur la plateforme TensorFlow et les deux librairies Keras et
           OpenCV.
         </p>
-        <p class="font-italic">
-          Nous avons entrainé le modèle à la base d’une dataset du plus de 4000 photos qu’on a collecté de différentes
+        <p class="font-italic" style="text-align: justify;">
+          Nous avons entrainé le modèle à la base d’un dataset de plus de 4000 photos qu’on a collecté de différentes
           sources.
         </p>
-        <p class="font-italic">
+        <p class="font-italic" style="text-align: justify;">
           Notre modèle a pu atteindre une haute précision de détection, cependant les mêmes problèmes qu’avant restent à
           résoudre,
           en grande partie la portée de la caméra et la lumière extérieure.
@@ -200,10 +199,10 @@
             <h3>Lecteur QR Code</h3>
             <p class="font-italic">
               </br>
-              EMINIA peut égalemment décrire les fonctionnalités des différents robots réalisés cette année en mécatronique via la
-              lecture des QR code. En effet, la tête du robot tourne à la recherche d'un QR code, une fois elle détecte un, le robot
-              s'oriente et se dirige vers ce dernier, le scanne, ouvre le site du projet équivalent et décrit brièvement ce dernier
-              via le chatbot, et la tête retourne à la recherche du QR code suivant.
+              EMINIA peut égalemment présenter les fonctionnalités des différents robots réalisés cette année en mécatronique via la
+              lecture des QR code. En effet, la tête du robot tourne à la recherche d'un QR code, une fois elle le détecte, le robot
+              s'oriente et se dirige vers ce dernier, le scanne, le décrit brièvement 
+              via le chatbot. Ensuite, la tête retourne à la recherche du QR code suivant.
             </p>
           </div>
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
