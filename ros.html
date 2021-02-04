@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Electrique - Eminia</title>
+  <title>Déplacement via ROS - Eminia</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -86,97 +86,83 @@
           <li><a href="index.html">Home</a></li>
           <li>Vie du projet</li>
           <li>Électrique</li>
+          <li>Déplacement via ROS</li>
         </ol>
-        <h2>Électrique</h2>
+        <h2>Déplacement via ROS</h2>
 
       </div>
     </section>
-
-    <!-- ======= schéma synoptique ======= -->
+    <div class="container" style="text-align: center; margin-top: 40px; font-size: large;">
+      L’implémentation de ROS se fait en 3 étapes : Le mapping, la navigation et la détection d’obstacles.
+    </div>
+    <!-- ======= 1-	Mapping ======= -->
     <section id="skills" class="skills">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-            <h3>Schéma synoptique</h3>
+            <h3>1- Mapping</h3>
             <br />
             <p class="font-italic">
-              L’intégralité du robot contient deux parties
+              Pour la première étape qui est le Mapping, on utilise un algorithme appelée Slam G-mapping. En son input, on a les
+              données recueillis à partir du Laser scan fait par le lidar, et l’odométrie donnée par les roues codeuses.
             </p>
             <p class="font-italic">
-              Une chaine d’information centralisée sur la carte <b>Nvidia Json</b> qui va acquérir les informations depuis le milieu
-              extérieur par le biais de la <b>camera realsense</b> et le <b>Lidar</b>, qui vont permettre d’assurer la détection des obstacles
-              mobiles ainsi qu’immobiles, sans oublier le fait qu’ils sont considérés comme des éléments cruciaux lors du mapping par
-              <b>ROS…</b> le <b>microphone unidirectionnel</b> quant à lui va permettre une meilleure détection du son pour assurer la fiabilité du
-              <b>chabot</b>. Cette chaine d’information va interagir avec l’utilisateur par un écran tactile ainsi qu’un haut-parleur.
-            </p>
-            <p class="font-italic">
-              Pour la partie déplacement centralisée sur une carte <b>arduino Méga</b> qui va contrôler la partie <b>hacheur+moteur DC+roue
-              suédoise</b>, on note aussi que la même carte va contrôler la rotation de la tête du robot via le <b>dynamixel MX106…</b>
-              Au final l’ensemble est alimenté par deux <b>batteries 12v/6Ah</b>
+              En résultat, on obtient le Map de la zone scannée, sur lequel s’affichent les portes et les murs comme le montre la
+              figure en dessous, et la probabilité d’occupation c’est-à-dire la probabilité que le robot soit en une position bien
+              déterminée.
             </p>
           </div>
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/synoptique.png" class="img-fluid" alt="">
+            <img src="assets/img/ros/ros1.png" class="img-fluid" alt="">
           </div>
         </div>
       </div>
     </section>
 
 
-    <!-- ======= Déplacement via ROS  ======= -->
+    <!-- ======= 2-	Navigation  ======= -->
     <section id="skills" class="skills">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/clients/ros.png" class="img-fluid" alt="">
+            <img src="assets/img/ros/ros2.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-            <h3>Déplacement via ROS</h3>
+            <br/>
+            <h3>2- Navigation</h3>
             <br/>
             <p class="font-italic">
-              Le cahier des charges impose que notre robot doit se déplacer d’une manière autonome vers une destination donnée tout en
-              évitant les obstacles mobiles qu’il rencontre durant son parcours. Pour se faire, on a opté pour ROS, le Robot Operating
-              System, qui est un ensemble d'outils informatiques sous formes de logiciels libres open source, permettant de développer
-              des logiciels pour la robotique.
+              Pour le paramétrage, on fait entrer des fichiers en extension yaml, qui contiennent les caractéristiques de notre robot
+              (v linéaire max, vitesse de rotation max, dimensions du robot...).
             </p>
             <p class="font-italic">
-              Pour notre cas, notre système dispose de plusieurs inputs, qui renvoient des informations instantanées. ROS permet la
-              gestion et l’optimisation du flux de ces informations.
+              Comme input, on donne le goal qui est la position souhaitée. En résultat, l’algorithme nous donne les commandes pour
+              l’atteindre.
             </p>
-            <a href="./ros.html" class="btn-learn-more">Savoir plus</a>
       </div>
         </div>
       </div>
     </section>
 
-    <!-- ======= borne de recharge ======= -->
+    <!-- ======= 3-	Détection d’obstacles ======= -->
     <section id="skills" class="skills">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-            <h3>Borne de recharge</h3>
+            <h3>3- Détection d’obstacles</h3>
             <br />
             <p class="font-italic">
-              La première solution qu’on a opté est celle du système d’alimentation par induction qui comprend une station fixe
-              connectée à une source photovoltaïque, qui elle-même connectée à une batterie de stockage. Le robot est par ailleurs
-              équipé d’un module récepteur d’induction placé dessous et connecté à la batterie. Cependant cette solution était chère à
-              acheter, donc on a opté pour une deuxième solution qui s’appuie sur la mesure de charge des batteries chaque 5 mins à
-              l’aide d’un capteur de capacité de batterie présenté ci-contre :
+              On dispose d’un fichier nommé DWA qui permet l’actualisation à tout moment du map. Et par suite l’affichage de chaque
+              obstacle détecté sur le map, il s’agit d’obstacles mobiles comme les obstacles fixes sont déjà incorporé dans le map
+              résultat de la première étape.
             </p>
             <p class="font-italic">
-              Ce capteur est lié à nos deux batteries principales, celle qui alimente Nvidia et la deuxième qui alimente les moteurs
-              liés aux trois roues.
-            </p>
-            <p class="font-italic">
-              Le principe de ce capteur est de calculer la tension de chaque batterie est la transformer en pourcentage de charge
-              selon des formules propres pour chaque batterie 3S et 4S. ce pourcentage sera envoyé à partir de Arduino vers python qui
-              renvoie lui-même l’information à Processing afin qu’elle soit affichée sur l’interface du robot. L’interface change
-              d’aspect selon le pourcentage de charge, qu’on a défini sa limite minimale à 15% qui sera la cause derrière l’envoi d’un
-              mail ou le robot demandera à la personne en charge de lui mettre sur secteur.
+              Ce fichier DWA contient l’algorithme du « Shortest path » (A*, Dijkstra) et donc régénère à chaque fois le parcours que
+              doit faire le robot pour aboutir à son objectif.
             </p>
           </div>
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/recharge.jpg" class="img-fluid" alt="" style="margin-left: 50px;">
+            <img src="assets/img/ros/ros3.png" class="img-fluid" alt="">
           </div>
         </div>
       </div>
